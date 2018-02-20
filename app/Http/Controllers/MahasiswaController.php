@@ -23,6 +23,16 @@ class MahasiswaController extends Controller
       echo $k.$id;
     }
 
+    public function coba(){
+
+      for($i=0;$i<850000;$i++){
+        $input = new MahasiswaM;
+        $input->nama = 'Rendy';
+        $input->jenis_kelamin = 'Laki-laki';
+        $input->save();
+      }
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -50,7 +60,8 @@ class MahasiswaController extends Controller
         $input->nama = $request->nama;
         $input->jenis_kelamin = $request->jenis_kelamin;
         $input->save();
-        return redirect()->route('mahasiswa.index')->with('message','Mahasiswa Berhasil Disimpan!');
+        // echo dd($request->all());
+        // return redirect()->route('mahasiswa.index')->with('message','Mahasiswa Berhasil Disimpan!');
     }
 
     /**
@@ -94,6 +105,11 @@ class MahasiswaController extends Controller
         ]);
         // $data['']
         MahasiswaM::find($id)->update($request->all());
+        //atau bis akaya gini
+        // $mhs = MahasiswaM::find($id);
+        // $mhs->nama = $request->nama;
+        // $mhs->jenis_kelamin = $request->jenis_kelamin;
+        // $mhs->save();
         // echo $request->input('body');
         // print_r($request);
         return redirect()->route('mahasiswa.index')

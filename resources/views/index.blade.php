@@ -10,22 +10,24 @@
       <td>{{$value->jenis_kelamin}}</td>
       <td>
         {!! Form::open(['method' => 'delete','route' => ['mahasiswa.destroy', $value->id],'style'=>'display:inline']) !!}
-        {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+        {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!} | <a href="{{route('mhs_delete',$value->id)}}">Hapus</a>
         {!! Form::close() !!}
         |
         {!! Form::open(['method' => 'get','route' => ['mahasiswa.edit', $value->id],'style'=>'display:inline']) !!}
-        {!! Form::submit('Edit', ['class' => 'btn btn-danger']) !!}
+        {!! Form::submit('Edit', ['class' => 'btn btn-danger']) !!} |
         {!! Form::close() !!}
       </td>
       </tr>
     @endforeach
 </table>
-
+{{-- {{dd($errors)}} --}}
+{{-- {{$errors->first('nama')}} --}}
 @if (count($errors)>0)
   @foreach ($errors->all() as $error)
     {{$error}}
   @endforeach
 @endif
+
 
 @if ($message=session('message'))
   {{$message}}<br>

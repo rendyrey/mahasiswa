@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\MahasiswaM;
 
 class KontrakController extends Controller
 {
@@ -14,6 +15,11 @@ class KontrakController extends Controller
     public function index()
     {
         //
+        $get_mhs = MahasiswaM::get();
+        foreach($get_mhs as $value){
+          $data['mhs_opt'][$value->id] = $value->nama;
+        }
+        return view('kontrak',$data);
     }
 
     /**

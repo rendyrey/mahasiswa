@@ -17,5 +17,10 @@
 Route::get('/','MahasiswaController@index');
 Route::resource('mahasiswa','MahasiswaController');
 Route::post('mhs_update/{id}','MahasiswaController@update')->name('mhs_update');
+Route::get('mhs_delete/{id}','MahasiswaController@destroy')->name('mhs_delete');
+
 
 Route::get('home/{id}/{nama}','MahasiswaController@home')->name('home');
+
+Route::get('kontrak','KontrakController@index')->name('kontrak');
+Route::post('kontrakpost','KontrakController@store')->name('kontrakpost');
